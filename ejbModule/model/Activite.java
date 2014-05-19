@@ -61,5 +61,9 @@ public class Activite implements Serializable {
 	public void setSport(Sport sport) {
 		this.sport = sport;
 	}
+	
+	public float getTarifTotal() {
+		return this.nbloc * this.sport.getTarifUnite();
+	}
 
 }
