@@ -1,6 +1,5 @@
 package traitements;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -31,12 +30,12 @@ public class GestionCerisaieBean implements GestionCerisaie {
 	public List<Client> liste_clients() throws MonException {
 		List<Client> retour = null;
 		try {
-			mesc = em.createQuery("SELECT c FROM Clientel c ORDER BY c.nomCl")
-					.getResultList();
+			String query = "SELECT c FROM Clientel c ORDER BY c.nomCl";
+			retour = em.createQuery(query).getResultList();
 		} catch (Exception ex) {
-			throw new MonException(ex.getMessage(), "recherche des clients");
+			throw new MonException(ex.getMessage(), "liste_clients()");
 		}
-		return mesc;
+		return retour;
 	}
 
 }
